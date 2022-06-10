@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ super() }} | Home {% endblock %}
+
+{% block content %}
+
+    <section class="hero" style="padding-bottom: 50px;">
+        <div class="container">
+            <div class="hero__slider owl-carousel">
+                <div class="hero__items set-bg" data-setbg="../static/img/hero-1.jpg">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <div class="label">Adventure</div>
+                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
+                                <p>After 30 days of travel across the world...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="list">
+        <div class="container" style="padding-bottom: 50px;">
+
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="section-title">
+                        <h4>News</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="btn__all">
+                        <a href="/news" class="primary-btn">View All
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-items">
+
+                {% for each in news %}
+
+                    <div class="product__sidebar__comment__item news_item">
+                        <div class="product__sidebar__comment__item__pic">
+                            <img src="{{ each['image_url'] }}" alt="">
+                        </div>
+                        <div class="product__sidebar__comment__item__text">
+                            <h5 style="padding-top: 10px; color: white; font-weight: bold;">{{ each['title'] }}</h5>
+                            <span>{{ each['text'] }}</span>
+                            <ul>
+                                {% for tag in each['tags'] %}
+                                    <li>{{ tag }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

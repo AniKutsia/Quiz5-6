@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ super() }} | News {% endblock %}
+
+{% block content %}
+    <section class="list">
+        <div class="container" style="padding-top: 50px; padding-bottom: 50px;">
+
+            <div class="section-title">
+                <h4>News</h4>
+            </div>
+
+            <div class="list-items">
+
+                {% for each in news %}
+
+                    <div class="product__sidebar__comment__item news_item">
+                        <div class="product__sidebar__comment__item__pic">
+                            <img src="{{ each['image_url'] }}" alt="">
+                        </div>
+                        <div class="product__sidebar__comment__item__text">
+                            <h5 style="padding-top: 10px; color: white; font-weight: bold;">{{ each['title'] }}</h5>
+                            <span>{{ each['text'] }}</span>
+                            <ul>
+                                {% for tag in each['tags'] %}
+                                    <li>{{ tag }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plyr.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <title>{% block title %} AniMe {% endblock %}</title>
+</head>
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="header__logo">
+                    <a href="/">
+                        <img src="../static/img/logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="header__nav">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="{% if request.path == '/' %}active{% endif %}"><a href="/">Home</a></li>
+                            <li class="{% if request.path == '/top_anime'
+                                          or request.path == '/top_airing'
+                                          or request.path == '/most_popular'
+                                          or request.path == '/top_movies' %}active{% endif %}"><a>TOP Anime
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path>
+                                </svg>
+                            </a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ url_for('top_anime') }}">All Anime</a></li>
+                                    <li><a href="{{ url_for('top_airing') }}">Top Airing</a></li>
+                                    <li><a href="{{ url_for('most_popular') }}">Most Popular</a></li>
+                                    <li><a href="{{ url_for('top_movies') }}">Top Movies</a></li>
+                                </ul>
+                            </li>
+                            <li class="{% if request.path == '/news' %}active{% endif %}"><a
+                                    href="{{ url_for('news') }}">News</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="header__right">
+                    <a href="{% if 'mail' in session %} {{ url_for('profile') }}
+                             {% else %} {{ url_for('login') }} {% endif %}">
+                        <span class="icon_profile"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+    </div>
+</header>
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+
+    <footer class="footer" style="z-index: 100;">
+        <div class="page-up">
+            <a href="#" id="scrollToTopButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                     class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"></path>
+                </svg>
+            </a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__logo">
+                        <a href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer__nav">
+                        <ul>
+                            <li class="active"><a href="/">Homepage</a></li>
+                            <li><a href="{{ url_for('top_anime') }}">Top Anime</a></li>
+                            <li><a href="{{ url_for('news') }}">News</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <p>Copyright © 2022 All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/player.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/mixitup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.slicknav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>
